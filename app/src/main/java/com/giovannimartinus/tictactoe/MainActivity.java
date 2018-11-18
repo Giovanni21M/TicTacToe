@@ -3,17 +3,16 @@ package com.giovannimartinus.tictactoe;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-
 
     // array with an item of 2 (means unplayed) for each (x,y) on the grid
     int[] gameState = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 
     // will use to determine whether the game is active or not
     boolean gameIsActive = true;
-
 
     class Score {
 
@@ -25,12 +24,17 @@ public class MainActivity extends AppCompatActivity {
                 {0,4,8}, {2,4,6}
         };
 
-        public void determineScore(int x)
+        public void determineScore() {
+
+        }
 
     }
 
 
     class Buttons {
+
+        // create variable used to determine which player is active
+        int activePlayer = 0;
 
         //  onClick method for grid layout spaces
         public void markSpace(View view) {
@@ -44,19 +48,27 @@ public class MainActivity extends AppCompatActivity {
             // get the tag of marker and assign to variable of integer type
             int selectedMarker = Integer.parseInt(marker.getTag().toString());
 
+            // if selectedMarker view is 2 (unplayed) and gameIsActive is true
             if (gameState[selectedMarker] == 2 && gameIsActive) {
+                // assign active player to selectedMarker view
+                gameState[selectedMarker] = activePlayer;
+                marker.setTranslationY(-1000f);
 
+                if (activePlayer == 0) {
+                    marker.setImageResource(R.drawable.cross);
+                    activePlayer = 1;
+                } else if (activePlayer == 1) {
+                    marker.setImageResource(R.drawable.nought);
+                    activePlayer = 0;
+                }
+
+                marker.animate()
+                        .translationYBy(1000f)
+                        .rotation(360)
+                        .setDuration(1000);
+
+                findScore.determineScore();
             }
-
-            marker.setTranslationY(-1000f);
-
-            marker.setImageResource(R.drawable.cross);
-            // marker.setImageResource(R.drawable.nought);
-
-            marker.animate()
-                    .translationYBy(1000f)
-                    .rotation(360)
-                    .setDuration(1000);
 
         }
 
