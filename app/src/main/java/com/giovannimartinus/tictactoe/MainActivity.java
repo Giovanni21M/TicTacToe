@@ -30,31 +30,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //  onClick method for grid layout spaces
-    public void markSpace(View view) {
+    class Buttons {
 
-        //create a variable of ImageView type
-        ImageView marker = (ImageView) view;
+        //  onClick method for grid layout spaces
+        public void markSpace(View view) {
 
-        // assign a class to an instant
-        Score findScore = new Score();
+            //create a variable of ImageView type
+            ImageView marker = (ImageView) view;
 
-        // get the tag of marker and assign to variable of integer type
-        int selectedMarker = Integer.parseInt(marker.getTag().toString());
+            // assign a class to an instant
+            Score findScore = new Score();
 
-        if (gameState[selectedMarker] == 2 && gameIsActive) {
+            // get the tag of marker and assign to variable of integer type
+            int selectedMarker = Integer.parseInt(marker.getTag().toString());
+
+            if (gameState[selectedMarker] == 2 && gameIsActive) {
+
+            }
+
+            marker.setTranslationY(-1000f);
+
+            marker.setImageResource(R.drawable.cross);
+            // marker.setImageResource(R.drawable.nought);
+
+            marker.animate()
+                    .translationYBy(1000f)
+                    .rotation(360)
+                    .setDuration(1000);
 
         }
-
-        marker.setTranslationY(-1000f);
-
-         marker.setImageResource(R.drawable.cross);
-        // marker.setImageResource(R.drawable.nought);
-
-        marker.animate()
-                .translationYBy(1000f)
-                .rotation(360)
-                .setDuration(1000);
 
     }
 
