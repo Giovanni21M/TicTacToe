@@ -24,8 +24,46 @@ public class MainActivity extends AppCompatActivity {
                 {0,4,8}, {2,4,6}
         };
 
-        public void determineScore() {
+        private void endMessage(String string) {
 
+        }
+
+        public void determineScore() {
+            for (int[] winningPosition : winningPositions) {
+
+                //  check to see if all three numbers in each array matches
+                if (gameState[winningPosition[0]] == gameState[winningPosition[1]] &&
+                        gameState[winningPosition[1]] == gameState[winningPosition[2]] &&
+                        gameState[winningPosition[0]] != 2) {
+
+                    gameIsActive = false;
+                    String winner;
+
+                    // determine which player won
+                    if (gameState[winningPosition[0]] == 0) {
+                        winner = "cross";
+                        endMessage(winner);
+                    } else if (gameState[winningPosition[1]] == 1) {
+                        winner = "nought";
+                        endMessage(winner);
+                    }
+                  // possibilities if no current winner
+                } else {
+
+                    boolean gameIsOver = true;
+
+                    // determine whether or not the game is still active
+                    for (int markerState : gameState) {
+                        if (markerState == 2) gameIsOver = false;
+                    }
+
+                    // determine if game is a draw
+                    if (gameIsOver) {
+                        endMessage("draw");
+                    }
+
+                }
+            }
         }
 
     }
@@ -50,10 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
             // if selectedMarker view is 2 (unplayed) and gameIsActive is true
             if (gameState[selectedMarker] == 2 && gameIsActive) {
-                // assign active player to selectedMarker view
+                // set player turn
                 gameState[selectedMarker] = activePlayer;
                 marker.setTranslationY(-1000f);
 
+                // assign active player to selectedMarker view and switch player turn
                 if (activePlayer == 0) {
                     marker.setImageResource(R.drawable.cross);
                     activePlayer = 1;
@@ -62,11 +101,13 @@ public class MainActivity extends AppCompatActivity {
                     activePlayer = 0;
                 }
 
+                // animate the view
                 marker.animate()
                         .translationYBy(1000f)
                         .rotation(360)
                         .setDuration(1000);
 
+                // call class' method
                 findScore.determineScore();
             }
 
