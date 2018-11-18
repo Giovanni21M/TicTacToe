@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,9 +28,23 @@ public class MainActivity extends AppCompatActivity {
 
         private void endMessage(String string) {
 
+            TextView endMessage = (TextView) findViewById(R.id.endMessage);
+
+            // make a LinerLayout visible
+            LinearLayout playAgainLayout = (LinearLayout) findViewById(R.id.playAgainLayout);
+            playAgainLayout.setVisibility(View.VISIBLE);
+
+            // determine which string to assign to the TextView
+            if (string == "cross" || string == "nought") {
+                endMessage.setText(string + " has won!");
+            } else if (string == "draw") {
+                endMessage.setText("It was a " + string + "!");
+            }
+
         }
 
         public void determineScore() {
+            
             for (int[] winningPosition : winningPositions) {
 
                 //  check to see if all three numbers in each array matches
