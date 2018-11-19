@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     // will use to determine whether the game is active or not
     boolean gameIsActive = true;
 
+    int activePlayer = 0;
+
     class Score {
 
         // an array of arrays
@@ -89,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
     class Buttons {
 
         // create variable used to determine which player is active
-        int activePlayer = 0;
+        //int activePlayer = 0;
 
         //  method to set the markers
-        private void markSpace(View view) {
+        public void spaceMarker(View view) {
 
             //create a variable of ImageView type
             ImageView marker = (ImageView) view;
@@ -131,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // method to reset the game
-        private void playAgainButton(View view) {
+        public void playAgain(View view) {
 
             gameIsActive = true;
 
@@ -151,6 +153,23 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    // onClick method
+    public void markSpace(View view) {
+
+        // ImageView marker = (ImageView) view;
+        Buttons buttons = new Buttons();
+
+        // call class' method
+        buttons.spaceMarker(view);
+
+    }
+
+    // onClick method
+    public void playAgainButton(View view) {
+        Buttons buttons = new Buttons();
+        buttons.playAgain(view);
     }
 
 
