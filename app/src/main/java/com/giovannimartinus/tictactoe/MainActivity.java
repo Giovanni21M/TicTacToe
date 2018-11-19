@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -90,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
         // create variable used to determine which player is active
         int activePlayer = 0;
 
-        //  onClick method for grid layout spaces
-        public void markSpace(View view) {
+        //  method to set the markers
+        private void markSpace(View view) {
 
             //create a variable of ImageView type
             ImageView marker = (ImageView) view;
@@ -125,6 +126,27 @@ public class MainActivity extends AppCompatActivity {
 
                 // call class' method
                 findScore.determineScore();
+            }
+
+        }
+
+        // method to reset the game
+        private void playAgainButton(View view) {
+
+            gameIsActive = true;
+
+            // set the LinearLayout back to invisible
+            LinearLayout playAgainLayout = (LinearLayout) findViewById(R.id.playAgainLayout);
+            playAgainLayout.setVisibility(View.INVISIBLE);
+
+            // set the game to start with player 1
+            activePlayer = 0;
+
+            GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout);
+
+            // set the image to zero (empty) for each of the grid's views
+            for(int i = 0; i < gridLayout.getChildCount(); i++) {
+                ((ImageView) gridLayout.getChildAt(i)).setImageResource(0);
             }
 
         }
