@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 {0,4,8}, {2,4,6}
         };
 
+
         private void endMessage(String string) {
 
             TextView endMessage = (TextView) findViewById(R.id.endMessage);
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+
 
         public void determineScore() {
             
@@ -132,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+
         // method to reset the game
         public void playAgain(View view) {
 
@@ -144,6 +147,11 @@ public class MainActivity extends AppCompatActivity {
             // set the game to start with player 1
             activePlayer = 0;
 
+            // change every gridlayout point view to "unplayed"
+            for (int i = 0; i < gameState.length; i++) {
+                gameState[i] = 2;
+            }
+
             GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout);
 
             // set the image to zero (empty) for each of the grid's views
@@ -155,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     // onClick method
     public void markSpace(View view) {
 
@@ -165,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
         buttons.spaceMarker(view);
 
     }
+
 
     // onClick method
     public void playAgainButton(View view) {
