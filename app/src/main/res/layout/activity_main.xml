@@ -31,7 +31,8 @@
         android:background="@drawable/tictactoeboard"
         android:layout_width="match_parent"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:id="@+id/gridLayout">
 
         <ImageView
             android:id="@+id/crossImage"
@@ -41,7 +42,8 @@
             android:layout_height="95dp"
             android:layout_margin="5dp"
             android:layout_marginTop="10dp"
-            android:onClick="markSpace" />
+            android:onClick="markSpace"
+            android:tag="0" />
 
         <ImageView
             android:id="@+id/crossImage2"
@@ -52,7 +54,8 @@
             android:layout_margin="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:onClick="markSpace" />
+            android:onClick="markSpace"
+            android:tag="1" />
 
         <ImageView
             android:id="@+id/crossImage3"
@@ -63,7 +66,8 @@
             android:layout_margin="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:onClick="markSpace" />
+            android:onClick="markSpace"
+            android:tag="2" />
 
         <ImageView
             android:id="@+id/crossImage4"
@@ -73,7 +77,8 @@
             android:layout_height="95dp"
             android:layout_margin="5dp"
             android:layout_marginTop="20dp"
-            android:onClick="markSpace" />
+            android:onClick="markSpace"
+            android:tag="3" />
 
         <ImageView
             android:id="@+id/crossImage5"
@@ -84,7 +89,8 @@
             android:layout_margin="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:onClick="markSpace" />
+            android:onClick="markSpace"
+            android:tag="4" />
 
         <ImageView
             android:id="@+id/crossImage6"
@@ -95,7 +101,8 @@
             android:layout_margin="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:onClick="markSpace" />
+            android:onClick="markSpace"
+            android:tag="5" />
 
         <ImageView
             android:id="@+id/crossImage7"
@@ -105,7 +112,8 @@
             android:layout_height="95dp"
             android:layout_margin="5dp"
             android:layout_marginTop="20dp"
-            android:onClick="markSpace" />
+            android:onClick="markSpace"
+            android:tag="6" />
 
         <ImageView
             android:id="@+id/crossImage8"
@@ -116,7 +124,8 @@
             android:layout_margin="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:onClick="markSpace" />
+            android:onClick="markSpace"
+            android:tag="7" />
 
         <ImageView
             android:id="@+id/crossImage9"
@@ -127,9 +136,40 @@
             android:layout_margin="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:onClick="markSpace" />
+            android:onClick="markSpace"
+            android:tag="8" />
 
     </GridLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/playAgainLayout"
+        android:background="@android:color/background_light">
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/endMessage"
+            android:gravity="center_horizontal"
+            android:textAlignment="gravity"
+            android:textColor="@android:color/black"
+            android:background="@color/colorPrimary"
+            android:textAllCaps="true" />
+
+        <Button
+            android:text="Play Again"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/playAgainButton"
+            android:onClick="playAgainButton"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
 
 
 </RelativeLayout>
